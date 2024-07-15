@@ -1,0 +1,46 @@
+.custom-tabs-list {
+    display: block!important;
+}
+
+.custom-tabs-trigger {
+    /*color: red!important;*/
+    width: 100%!important;
+}
+
+.custom-tabs-trigger span {
+    width: 100%!important;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 15px;
+    padding-right: 20px;
+    font-weight: normal!important;
+}
+
+.custom-tabs-trigger[data-state="active"] {
+    color: var(--blue-9)!important;
+    pointer-events: none;
+}
+
+.custom-tabs-trigger:where([data-state='active'], [data-active])::before {
+    box-sizing: border-box;
+    content: '';
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--accent-a4);
+}
+
+.custom-tabs-trigger:hover {
+    background-color: var(--gray-2);
+}
+
+.custom-tabs-trigger:hover * {
+    background: transparent!important;
+}
+
+.rt-BaseTabList{
+    box-shadow: none!important;
+    margin: 0!important;
+}

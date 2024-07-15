@@ -1,0 +1,204 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+datasource db {
+    provider = "mysql"
+    url      = env("DATABASE_URL")
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+model User {
+    id            String          @id @default(cuid())
+    name          String?
+    username      String?         @unique
+    email         String?         @unique
+    emailVerified DateTime?
+    password      String?
+    image         String?
+    Session       Session[]
+    Account       Account?
+    // Optional for WebAuthn support
+    Authenticator Authenticator[]
+
+    createdAt   DateTime      @default(now())
+    updatedAt   DateTime      @updatedAt
+    Assessments Assessments[]
+}
+
+model Account {
+    id                       String  @id @default(cuid())
+    userId                   String  @unique
+    type                     String
+    provider                 String
+    providerAccountId        String
+    refresh_token            String? @db.Text
+    access_token             String? @db.Text
+    expires_at               Int?
+    token_type               String?
+    scope                    String?
+    id_token                 String? @db.Text
+    session_state            String?
+    refresh_token_expires_in Int?
+    user                     User?   @relation(fields: [userId], references: [id])
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@unique([provider, providerAccountId])
+    @@index([userId])
+}
+
+model Session {
+    id           String   @id @default(cuid())
+    sessionToken String   @unique
+    userId       String
+    expires      DateTime
+    user         User     @relation(fields: [userId], references: [id])
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index([userId])
+}
+
+model VerificationToken {
+    identifier String
+    token      String
+    expires    DateTime
+
+    @@unique([identifier, token])
+}
+
+// Optional for WebAuthn support
+model Authenticator {
+    credentialID         String  @unique
+    userId               String
+    providerAccountId    String
+    credentialPublicKey  String
+    counter              Int
+    credentialDeviceType String
+    credentialBackedUp   Boolean
+    transports           String?
+
+    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@id([userId, credentialID])
+}
+
+model Assessments {
+    id       String @id @default(cuid())
+    publicId String @unique @default(cuid())
+    userId   String
+
+    assessmentDate  DateTime
+    propertyName    String
+    propertyManager String
+    propertyStreet  String
+    propertyCity    String
+    propertyState   String
+    propertyZip     String
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    user User @relation(fields: [userId], references: [id])
+}
+
+model Sections {
+    id String @id @default(cuid())
+
+    arrangement Int
+    numeration  Int
+
+    title       String  @db.VarChar(255)
+    description String  @default("") @db.Text
+    visible     Boolean @default(true)
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    SubSections SubSections[]
+}
+
+model SubSections {
+    id        String @id @default(cuid())
+    sectionId String
+
+    arrangement Int
+    numeration  Decimal @db.Decimal(10, 1)
+
+    title       String  @db.VarChar(255)
+    description String  @default("") @db.Text
+    visible     Boolean @default(true)
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    section Sections @relation(fields: [sectionId], references: [id])
+    Inputs  Inputs[]
+}
+
+model Inputs {
+    id           String @id @default(cuid())
+    subSectionId String
+
+    arrangement Int
+
+    title       String  @db.VarChar(255)
+    description String? @db.Text
+
+    tag         InputTags
+    type        InputTypes
+    name        String     @db.VarChar(255)
+    value       String?    @db.Text
+    placeholder String?    @db.Text
+    accept      String?    @db.Text
+    options     String?    @db.Text
+
+    max       Int?
+    min       Int?
+    maxLength Int?
+    minLength Int?
+
+    required Boolean @default(true)
+    visible  Boolean @default(true)
+    multiple Boolean @default(false)
+
+    pattern String? @db.VarChar(255)
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    subSection SubSections @relation(fields: [subSectionId], references: [id])
+}
+
+enum InputTags {
+    INPUT
+    TEXTAREA
+    SELECT
+}
+
+enum InputTypes {
+    TEXT
+    NUMBER
+    EMAIL
+    TEL
+    URL
+    PASSWORD
+    FILE
+    CHECKBOX
+    RADIO
+    DATE
+    TIME
+    DATETIME
+    MONTH
+    WEEK
+    COLOR
+    RANGE
+}
