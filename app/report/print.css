@@ -1,7 +1,5 @@
 @page {
-    /*margin-top: 1cm;*/
-    /*margin-bottom: 3cm;*/
-    margin: unset;
+    margin: 0!important;
     margin-bottom: 1cm!important;
     margin-top: 1cm!important;
 
@@ -21,8 +19,6 @@
 
     footer {
         display: none!important;
-        /*background: none!important;*/
-        /*text-align: center!important;*/
     }
 
     .sideNav {
@@ -31,37 +27,22 @@
 
     .print {
         grid-column: span 12!important;
-        /*padding: 0!important;*/
-        /*margin: 0!important;*/
+        padding-left: 1cm!important;
+        padding-right: 1cm!important;
     }
 
     .print section {
-        /*margin-top: 0!important;*/
         page-break-before: always;
     }
-
-    /*.print section:nth-of-type(1),*/
-    /*.print section:nth-of-type(2) {*/
-    /*    page-break-before: auto;*/
-    /*}*/
 
     .print section:nth-of-type(1) {
         /*page-break-before: auto;*/
         /*margin-top: 15vh;*/
     }
 
-    /*.print section div:nth-of-type(1) {*/
-    /*    margin-top: 0!important;*/
-    /*}*/
-
     .print section ~ section div:nth-of-type(1) {
         margin-top: 0!important;
     }
-
-    /*.print img {*/
-    /*    max-width: 100%!important;*/
-    /*    max-height: 160px!important;*/
-    /*}*/
 
     .imageGrid-3{
         grid-template-columns: repeat(3, minmax(0, 1fr))!important;

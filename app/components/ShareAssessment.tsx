@@ -12,7 +12,7 @@ interface Props {
 const ShareAssessment = ({ assessmentId, page }: Props) => {
     const [isCopied, setIsCopied] = useState(false);
 
-    const link = process.env.APP_URL + `/report/${assessmentId}`;
+    const link = `https://t1ops.com/report/${assessmentId}`;
 
     const handleCopy = () => {
         navigator.clipboard.writeText(link).then(() => {

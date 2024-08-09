@@ -78,110 +78,109 @@ const Introduction = ({ responses }: Props ) => {
                         1.3 Methodology
                     </h3>
 
-                    <div className="border rounded-lg mb-10">
-                        <table className="w-full bg-white rounded-lg table-fixed">
-                            <thead>
-                            <tr className="bg-blue-300">
-                                <th className="w-1/3 text-sm sm:text-[16px] py-3 px-2 sm:px-4 text-left text-blue-900 font-semibold border-b border-e rounded-tl-lg">
-                                    Crime analysis
-                                </th>
-                                <th className="w-1/3 text-sm sm:text-[16px] py-3 px-2 sm:px-4 text-left text-blue-900 font-semibold border-b border-e">
-                                    Assessment
-                                </th>
-                                <th className="w-1/3 text-sm sm:text-[16px] py-3 px-2 sm:px-4 text-left text-blue-900 font-semibold border-b rounded-tr-lg">
-                                    Considerations & Compliance
-                                </th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td className="py-3 px-1 text-sm sm:p-4 sm:text-[16px] border-e">
-                                    <ul className="list-disc pl-5 space-y-2">
-                                        <li>Crime statistics analysis for Homicide, Rape, Aggravated
-                                            assault, Armed Robbery and Burglary
-                                        </li>
-                                        <li>Comparison between crime statistics for the neighborhood
-                                            and the property
-                                        </li>
-                                    </ul>
-                                </td>
-                                <td className="py-3 px-1 text-sm sm:p-4 sm:text-[16px] border-e">
-                                    <ul className="list-disc pl-5 space-y-2">
-                                        <li>Neighborhood CPTED assessment</li>
-                                        <li>Site CPTED assessment</li>
-                                        <li>Physical security assessment</li>
-                                        <li>Comprehensive light assessment</li>
-                                    </ul>
-                                </td>
-                                <td className="py-3 px-1 text-sm sm:p-4 sm:text-[16px]">
-                                    <ul className="list-disc pl-5 space-y-2">
-                                        <li>Considerations based on observations</li>
-                                        <li>Compliance on considerations</li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    {/*<div className='grid sm:grid-cols-3 gap-3'>*/}
-                    {/*    <div className='flex flex-col'>*/}
-                    {/*        <div className='p-4 bg-blue-300 rounded-t-lg'>*/}
-                    {/*            <b>Crime analysis</b>*/}
-                    {/*        </div>*/}
-                    {/*        <div className='p-4 border bg-white rounded-b-lg flex-grow'>*/}
-                    {/*            <ul className='list-disc px-4'>*/}
-                    {/*                <li className='mb-3'>*/}
-                    {/*                    Crime statistics analysis for Homicide, Rape, Aggravated*/}
-                    {/*                    assault, Armed Robbery and Burglary*/}
-                    {/*                </li>*/}
-                    {/*                <li>*/}
-                    {/*                    Comparison between crime statistics for the neighborhood and*/}
-                    {/*                    the*/}
-                    {/*                    property*/}
-                    {/*                </li>*/}
-                    {/*            </ul>*/}
-                    {/*        </div>*/}
-                    {/*    </div>*/}
-
-                    {/*    <div className='flex flex-col'>*/}
-                    {/*        <div className='p-4 bg-blue-300 rounded-t-lg'>*/}
-                    {/*            <b>Assessment</b>*/}
-                    {/*        </div>*/}
-                    {/*        <div className='p-4 border bg-white rounded-b-lg flex-grow'>*/}
-                    {/*            <ul className='list-disc px-4'>*/}
-                    {/*                <li className='mb-3'>*/}
-                    {/*                    Neighborhood CPTED assessment*/}
-                    {/*                </li>*/}
-                    {/*                <li className='mb-3'>*/}
-                    {/*                    Site CPTED assessment*/}
-                    {/*                </li>*/}
-                    {/*                <li className='mb-3'>*/}
-                    {/*                    Physical security assessment*/}
-                    {/*                </li>*/}
-                    {/*                <li>*/}
-                    {/*                    Comprehensive light assessment*/}
-                    {/*                </li>*/}
-                    {/*            </ul>*/}
-                    {/*        </div>*/}
-                    {/*    </div>*/}
-
-                    {/*    <div className='flex flex-col'>*/}
-                    {/*        <div className='p-4 bg-blue-300 rounded-t-lg'>*/}
-                    {/*            <b>Considerations and Compliance</b>*/}
-                    {/*        </div>*/}
-                    {/*        <div className='p-4 border bg-white rounded-b-lg flex-grow'>*/}
-                    {/*            <ul className='list-disc px-4'>*/}
-                    {/*                <li className='mb-3'>*/}
-                    {/*                    Considerations based on observations*/}
-                    {/*                </li>*/}
-                    {/*                <li>*/}
-                    {/*                    Compliance on considerations*/}
-                    {/*                </li>*/}
-                    {/*            </ul>*/}
-                    {/*        </div>*/}
-                    {/*    </div>*/}
+                    {/*<div className="border rounded-lg mb-10">*/}
+                    {/*    <table className="w-full bg-white rounded-lg table-fixed">*/}
+                    {/*        <thead>*/}
+                    {/*        <tr className="bg-blue-300">*/}
+                    {/*            <th className="w-1/3 text-sm sm:text-[16px] py-3 px-2 sm:px-4 text-left text-blue-900 font-semibold border-b border-e rounded-tl-lg">*/}
+                    {/*                Crime analysis*/}
+                    {/*            </th>*/}
+                    {/*            <th className="w-1/3 text-sm sm:text-[16px] py-3 px-2 sm:px-4 text-left text-blue-900 font-semibold border-b border-e">*/}
+                    {/*                Assessment*/}
+                    {/*            </th>*/}
+                    {/*            <th className="w-1/3 text-sm sm:text-[16px] py-3 px-2 sm:px-4 text-left text-blue-900 font-semibold border-b rounded-tr-lg">*/}
+                    {/*                Considerations & Compliance*/}
+                    {/*            </th>*/}
+                    {/*        </tr>*/}
+                    {/*        </thead>*/}
+                    {/*        <tbody>*/}
+                    {/*        <tr>*/}
+                    {/*            <td className="py-3 px-1 text-sm sm:p-4 sm:text-[16px] border-e">*/}
+                    {/*                <ul className="list-disc pl-5 space-y-2">*/}
+                    {/*                    <li>Crime statistics analysis for Homicide, Rape, Aggravated*/}
+                    {/*                        assault, Armed Robbery and Burglary*/}
+                    {/*                    </li>*/}
+                    {/*                    <li>Comparison between crime statistics for the neighborhood*/}
+                    {/*                        and the property*/}
+                    {/*                    </li>*/}
+                    {/*                </ul>*/}
+                    {/*            </td>*/}
+                    {/*            <td className="py-3 px-1 text-sm sm:p-4 sm:text-[16px] border-e">*/}
+                    {/*                <ul className="list-disc pl-5 space-y-2">*/}
+                    {/*                    <li>Neighborhood CPTED assessment</li>*/}
+                    {/*                    <li>Site CPTED assessment</li>*/}
+                    {/*                    <li>Physical security assessment</li>*/}
+                    {/*                    <li>Comprehensive light assessment</li>*/}
+                    {/*                </ul>*/}
+                    {/*            </td>*/}
+                    {/*            <td className="py-3 px-1 text-sm sm:p-4 sm:text-[16px]">*/}
+                    {/*                <ul className="list-disc pl-5 space-y-2">*/}
+                    {/*                    <li>Considerations based on observations</li>*/}
+                    {/*                    <li>Compliance on considerations</li>*/}
+                    {/*                </ul>*/}
+                    {/*            </td>*/}
+                    {/*        </tr>*/}
+                    {/*        </tbody>*/}
+                    {/*    </table>*/}
                     {/*</div>*/}
+
+                    <div className='grid md:grid-cols-3 gap-5'>
+                        <div className='flex flex-col'>
+                            <div className='px-4 py-3 bg-blue-300 text-blue-900 flex items-start rounded-t-lg'>
+                                <b className='flex-grow'>Crime analysis</b>
+                            </div>
+                            <div className='p-4 border bg-white rounded-b-lg flex-grow'>
+                                <ul className='list-disc px-4'>
+                                    <li className='mb-3'>
+                                        Crime statistics analysis for Homicide, Rape, Aggravated
+                                        assault, Armed Robbery, and Burglary
+                                    </li>
+                                    <li>
+                                        Comparison between crime statistics for the neighborhood and
+                                        the property
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div className='flex flex-col'>
+                            <div className='px-4 py-3 bg-blue-300 text-blue-900 flex items-start rounded-t-lg'>
+                                <b className='flex-grow'>Assessment</b>
+                            </div>
+                            <div className='p-4 border bg-white rounded-b-lg flex-grow'>
+                                <ul className='list-disc px-4'>
+                                    <li className='mb-3'>
+                                        Neighborhood CPTED assessment
+                                    </li>
+                                    <li className='mb-3'>
+                                        Site CPTED assessment
+                                    </li>
+                                    <li className='mb-3'>
+                                        Physical security assessment
+                                    </li>
+                                    <li>
+                                        Comprehensive light assessment
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div className='flex flex-col'>
+                            <div className='px-4 py-3 bg-blue-300 text-blue-900 flex items-start rounded-t-lg'>
+                                <b className='flex-grow'>Considerations & Compliance</b>
+                            </div>
+                            <div className='p-4 border bg-white rounded-b-lg flex-grow'>
+                                <ul className='list-disc px-4'>
+                                    <li className='mb-3'>
+                                        Considerations based on observations
+                                    </li>
+                                    <li>
+                                        Compliance on considerations
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
 
                     {/*<div className="container mx-auto mt-10">*/}
                     {/*    <div className="overflow-x-auto">*/}
@@ -233,7 +232,7 @@ const Introduction = ({ responses }: Props ) => {
                 </div>
             </div>
         </section>
-    );
+);
 }
 
 export default Introduction
