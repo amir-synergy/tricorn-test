@@ -13,7 +13,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-    title: "Dashboard | Signal",
+    title: "Team Signal",
     description: "Mobile Patrol Security Services",
 };
 
