@@ -41,9 +41,11 @@ const Login = () => {
                 const user = session.user as CustomUser;
                 if (user.role === 'ADMIN') {
                     router.push('/admin');
+                    router.refresh();
                 } else {
                     if (user.status === 'ACTIVE') {
                         router.push('/dashboard');
+                        router.refresh();
                     } else {
                         setError('Your account is not active');
                         setIsSubmitting(false);

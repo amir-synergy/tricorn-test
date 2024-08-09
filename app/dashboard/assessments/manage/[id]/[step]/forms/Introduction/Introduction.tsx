@@ -127,6 +127,7 @@ export default function Introduction({
                             </label>
                             <input type="number"
                                    id='propertyZip'
+                                   pattern="[0-9]*" inputMode="numeric"
                                    className='block w-full bg-white border-b py-2 px-3 focus:outline-0 focus:border-b-blue-400'
                                    placeholder='Zip / Postal code'
                                    {...register("propertyZip", {
