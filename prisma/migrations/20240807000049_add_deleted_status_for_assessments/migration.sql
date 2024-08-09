@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `Assessments` MODIFY `status` ENUM('ACTIVE', 'DRAFT', 'ARCHIVED', 'DELETED') NOT NULL DEFAULT 'DRAFT';

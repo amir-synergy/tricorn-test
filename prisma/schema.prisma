@@ -21,14 +21,28 @@ model User {
     emailVerified DateTime?
     password      String?
     image         String?
+    role          UserRoles       @default(USER)
     Session       Session[]
     Account       Account?
     // Optional for WebAuthn support
     Authenticator Authenticator[]
 
-    createdAt   DateTime      @default(now())
-    updatedAt   DateTime      @updatedAt
-    Assessments Assessments[]
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    status UserStatuses @default(ACTIVE)
+
+    assessments Assessments[]
+}
+
+enum UserRoles {
+    ADMIN
+    USER
+}
+
+enum UserStatuses {
+    ACTIVE
+    BLOCKED
 }
 
 model Account {
@@ -92,38 +106,59 @@ model Authenticator {
 }
 
 model Assessments {
-    id       String @id @default(cuid())
-    publicId String @unique @default(cuid())
-    userId   String
+    id String @id @default(cuid())
 
-    assessmentDate  DateTime
-    propertyName    String
-    propertyManager String
-    propertyStreet  String
-    propertyCity    String
-    propertyState   String
-    propertyZip     String
+    userId String @db.VarChar(255)
+    user   User   @relation(fields: [userId], references: [id])
+
+    // assessmentDate  String? @db.VarChar(255)
+    // propertyName    String? @db.VarChar(255)
+    // propertyManager String? @db.VarChar(255)
+    // propertyStreet  String? @db.VarChar(255)
+    // propertyCity    String? @db.VarChar(255)
+    // propertyState   String? @db.VarChar(255)
+    // propertyZip     Int?    @db.Int
+
+    status AssessmentStatus @default(DRAFT)
+
+    responses      Responses[]
+    imageResponses ImageResponses[]
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
+}
 
-    user User @relation(fields: [userId], references: [id])
+enum AssessmentStatus {
+    ACTIVE
+    DRAFT
+    ARCHIVED
+    DELETED
+}
+
+model Documents {
+    id          String   @id @default(cuid())
+    title       String?  @db.VarChar(255)
+    description String?  @db.Text
+    url         String   @db.Text
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
 }
 
 model Sections {
     id String @id @default(cuid())
 
     arrangement Int
-    numeration  Int
+    numeration  Int?
 
     title       String  @db.VarChar(255)
-    description String  @default("") @db.Text
+    description String? @db.Text
     visible     Boolean @default(true)
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
-    SubSections SubSections[]
+    subSections SubSections[]
+    inputs      Inputs[]
 }
 
 model SubSections {
@@ -131,51 +166,58 @@ model SubSections {
     sectionId String
 
     arrangement Int
-    numeration  Decimal @db.Decimal(10, 1)
+    numeration  Decimal? @db.Decimal(10, 1)
 
-    title       String  @db.VarChar(255)
-    description String  @default("") @db.Text
-    visible     Boolean @default(true)
+    title       String   @db.VarChar(255)
+    description String?  @db.Text
+    visible     Boolean? @default(true)
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
     section Sections @relation(fields: [sectionId], references: [id])
-    Inputs  Inputs[]
+    inputs  Inputs[]
 }
 
 model Inputs {
-    id           String @id @default(cuid())
-    subSectionId String
+    id String @id @default(cuid())
+
+    sectionId String? // Nullable for Inputs related to Sections
+    section   Sections? @relation(fields: [sectionId], references: [id])
+
+    subSectionId String? // Nullable for Inputs related to SubSections
+    subSection   SubSections? @relation(fields: [subSectionId], references: [id])
 
     arrangement Int
 
-    title       String  @db.VarChar(255)
+    title       String? @db.VarChar(255)
     description String? @db.Text
+    label       String? @db.VarChar(500)
 
     tag         InputTags
-    type        InputTypes
-    name        String     @db.VarChar(255)
-    value       String?    @db.Text
-    placeholder String?    @db.Text
-    accept      String?    @db.Text
-    options     String?    @db.Text
+    type        InputTypes?
+    name        String      @db.VarChar(255) // For form submission
+    value       String?     @db.Text // For default values
+    placeholder String?     @db.VarChar(255) // For text inputs
+    accept      String?     @db.VarChar(255) // For file inputs
+    options     String?     @db.Text // For select options
 
     max       Int?
     min       Int?
     maxLength Int?
     minLength Int?
 
-    required Boolean @default(true)
-    visible  Boolean @default(true)
-    multiple Boolean @default(false)
+    required Boolean  @default(true) // For form validation
+    multiple Boolean? // For file inputs
 
-    pattern String? @db.VarChar(255)
+    pattern String? @db.VarChar(255) // For pattern regex
+
+    visible Boolean @default(true) // For conditional visibility
+
+    // responses Responses[]
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
-
-    subSection SubSections @relation(fields: [subSectionId], references: [id])
 }
 
 enum InputTags {
@@ -201,4 +243,42 @@ enum InputTypes {
     WEEK
     COLOR
     RANGE
+}
+
+model Responses {
+    id Int @id @default(autoincrement())
+
+    assessmentId String
+    assessment   Assessments @relation(fields: [assessmentId], references: [id])
+
+    // inputId String?
+    // input   Inputs? @relation(fields: [inputId], references: [id])
+
+    step  String  @db.VarChar(255) // tmp: will be replaced by sectionId or subSectionId
+    name  String  @db.VarChar(255)
+    value String? @db.Text
+
+    // type  String? @db.VarChar(255)
+    // group String? @db.VarChar(255)
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model ImageResponses {
+    id Int @id @default(autoincrement())
+
+    assessmentId String
+    assessment   Assessments @relation(fields: [assessmentId], references: [id])
+
+    // inputId String?
+    // input   Inputs? @relation(fields: [inputId], references: [id])
+
+    step     String  @db.VarChar(255) // tmp: will be replaced by sectionId or subSectionId
+    name     String  @db.VarChar(255)
+    fileName String  @db.VarChar(255)
+    filePath String? @db.Text
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 }

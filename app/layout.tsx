@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import { Theme } from "@radix-ui/themes";
 import "./custom.css";
+import SessionWrapper from "@/app/SessionWrapper";
 
 const montserrat = Montserrat({
     subsets: ["latin"],
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
     description: "Mobile Patrol Security Services",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
     children,
 }: {
     children: React.ReactNode;
@@ -24,9 +25,11 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={montserrat.className}>
-                <Theme accentColor='blue'>
-                    {children}
-                </Theme>
+                <SessionWrapper>
+                    <Theme accentColor='blue'>
+                        {children}
+                    </Theme>
+                </SessionWrapper>
             </body>
         </html>
     );

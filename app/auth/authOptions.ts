@@ -1,13 +1,15 @@
 import { NextAuthOptions } from "next-auth";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import CredentialsProvider from "next-auth/providers/credentials";
+import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
 import { prisma } from "@/prisma/client";
+import {CustomUser} from "@/types";
 
 export const authOptions: NextAuthOptions = {
     adapter: PrismaAdapter(prisma),
+
     providers: [
-        CredentialsProvider({
+        Credentials({
             name: "Credentials",
             credentials: {
                 email: { label: "Email", type: "email", placeholder: "email@domain.com" },
@@ -23,6 +25,7 @@ export const authOptions: NextAuthOptions = {
                 });
 
                 if (!user) {
+                    // return Promise.resolve(null);
                     return null;
                 }
 
@@ -31,11 +34,45 @@ export const authOptions: NextAuthOptions = {
                     user.password!
                 );
 
-                return passwordsMatch ? user : null;
+                if (!passwordsMatch) {
+                    // return Promise.resolve(null);
+                    return null;
+                }
+
+                // return Promise.resolve(user);
+                return user;
             }
         })
     ],
+
     session: {
         strategy: 'jwt'
+    },
+
+    pages: {
+        signIn: '/auth/login',
+    },
+
+    callbacks: {
+        async jwt({ token, user }) {
+            if (user) {
+                token.user = user as CustomUser;
+            }
+
+            return token;
+        },
+
+        async session({ session, token }) {
+            session.user = token.user!;
+            return session;
+        },
+
+        // async redirect({ url, baseUrl, token }) {
+        //     if (token.user.role === 'admin') {
+        //         return `${baseUrl}/admin`;
+        //     } else {
+        //         return `${baseUrl}/dashboard`;
+        //     }
+        // }
     },
 }

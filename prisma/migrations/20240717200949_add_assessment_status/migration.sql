@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `Assessments` ADD COLUMN `status` ENUM('ACTIVE', 'DRAFT', 'ARCHIVED') NOT NULL DEFAULT 'DRAFT';

@@ -1,0 +1,119 @@
+@page {
+    /*margin-top: 1cm;*/
+    /*margin-bottom: 3cm;*/
+    margin: unset;
+    margin-bottom: 1cm!important;
+    margin-top: 1cm!important;
+
+}
+
+@media print {
+    .bg-gradient {
+        background-color: unset!important;
+        background-image: url("/bg/pdf2.png")!important;
+        background-repeat: no-repeat;
+        background-position: top 63vh center;
+    }
+
+    header {
+        display: none!important;
+    }
+
+    footer {
+        display: none!important;
+        /*background: none!important;*/
+        /*text-align: center!important;*/
+    }
+
+    .sideNav {
+        display: none!important;
+    }
+
+    .print {
+        grid-column: span 12!important;
+        /*padding: 0!important;*/
+        /*margin: 0!important;*/
+    }
+
+    .print section {
+        /*margin-top: 0!important;*/
+        page-break-before: always;
+    }
+
+    /*.print section:nth-of-type(1),*/
+    /*.print section:nth-of-type(2) {*/
+    /*    page-break-before: auto;*/
+    /*}*/
+
+    .print section:nth-of-type(1) {
+        /*page-break-before: auto;*/
+        /*margin-top: 15vh;*/
+    }
+
+    /*.print section div:nth-of-type(1) {*/
+    /*    margin-top: 0!important;*/
+    /*}*/
+
+    .print section ~ section div:nth-of-type(1) {
+        margin-top: 0!important;
+    }
+
+    /*.print img {*/
+    /*    max-width: 100%!important;*/
+    /*    max-height: 160px!important;*/
+    /*}*/
+
+    .imageGrid-3{
+        grid-template-columns: repeat(3, minmax(0, 1fr))!important;
+    }
+    .imageGrid-3 img{
+        /*object-fit: contain!important;*/
+        aspect-ratio: 3/4;
+    }
+
+    .imageGrid-2{
+        grid-template-columns: repeat(2, minmax(0, 1fr))!important;
+    }
+    .imageGrid-2 img{
+        object-fit: contain!important;
+        aspect-ratio: 1/1;
+    }
+
+    .imageGrid-1{
+        grid-template-columns: repeat(1, minmax(0, 1fr))!important;
+    }
+    .imageGrid-1 img{
+        object-fit: contain!important;
+        aspect-ratio: unset!important;
+    }
+
+    .assessment-details-grid {
+        margin-top: 40px!important;
+        grid-template-columns: repeat(1, minmax(0, 1fr))!important;
+    }
+
+    .assessment-details-grid p {
+        font-size: 23px!important;
+        margin-bottom: 10px!important;
+    }
+
+    .table-of-contents{
+        display: block!important;
+    }
+
+    .pdf-header {
+        display: flex!important;
+        justify-content: left!important;
+        margin-bottom: 10vh;
+    }
+
+    .pdf-header img{
+        width: 200px!important;
+    }
+
+    .pdf-footer {
+        display: flex!important;
+        justify-content: space-between!important;
+        margin-top: 47vh;
+    }
+}
