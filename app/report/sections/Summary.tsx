@@ -8,7 +8,7 @@ interface Props {
 
 const Summary = ({ responses, imageResponses }: Props) => {
     return (
-        responses['summary'].summary && (
+        responses['summary']?.summary && (
             <section id=''>
                 <div className='my-16'>
                     <div className='mb-10' id='summary'>
