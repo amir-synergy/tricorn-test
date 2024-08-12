@@ -1,12 +1,11 @@
 import '@radix-ui/themes/styles.css';
 import "./globals.css";
 import React from "react";
-import type { Metadata } from "next";
+import type {Metadata, Viewport} from "next";
 import { Montserrat } from "next/font/google";
 import { Theme } from "@radix-ui/themes";
 import "./custom.css";
 import SessionWrapper from "@/app/SessionWrapper";
-import Head from "next/head";
 
 const montserrat = Montserrat({
     subsets: ["latin"],
@@ -16,7 +15,15 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
     title: "Team Signal",
     description: "Mobile Patrol Security Services",
+
 };
+
+export const viewport: Viewport = {
+    width: "device-width",
+    initialScale: 1,
+    minimumScale: 1,
+    userScalable: false,
+}
 
 export default async function RootLayout({
     children,
@@ -25,9 +32,6 @@ export default async function RootLayout({
 }) {
     return (
         <html lang="en">
-            <Head>
-                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-            </Head>
             <body className={montserrat.className}>
                 <SessionWrapper>
                     <Theme accentColor='blue'>
