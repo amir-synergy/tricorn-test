@@ -1,7 +1,7 @@
 'use client';
 
 import { useSession, signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import {redirect, useRouter} from "next/navigation";
 import { useForm } from 'react-hook-form';
 import {useEffect, useState} from "react";
 
@@ -40,12 +40,14 @@ const Login = () => {
 
                 const user = session.user as CustomUser;
                 if (user.role === 'ADMIN') {
-                    router.push('/admin');
-                    router.refresh();
+                    // router.push('/admin');
+                    // router.refresh();
+                    redirect('/admin');
                 } else {
                     if (user.status === 'ACTIVE') {
-                        router.push('/dashboard');
-                        router.refresh();
+                        // router.push('/dashboard');
+                        // router.refresh();
+                        redirect('/dashboard');
                     } else {
                         setError('Your account is not active');
                         setIsSubmitting(false);

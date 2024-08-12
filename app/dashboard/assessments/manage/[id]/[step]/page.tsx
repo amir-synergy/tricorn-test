@@ -152,7 +152,7 @@ const ManageAssessmentPage = ({ params }: Props) => {
     const CurrentFormComponent = steps[currentSection]?.component || null;
 
     return (
-        <>
+        <div className='bg-gradient'>
             <SideNav
                 responses={responses}
                 currentStepName={currentStep.name}
@@ -161,7 +161,7 @@ const ManageAssessmentPage = ({ params }: Props) => {
                 handleSaveAndExit={handleSaveAndExit}
                 isHandlingSaveAndExit={isHandlingSaveAndExit}
             />
-            <div className="sm:ml-80 bg-gradient min-h-screen pb-[105px]">
+            <div className="sm:ml-80 min-h-screen pb-[105px]">
                 <article className="lg:p-10 md:p-8 p-6">
                     <div className='bg-white p-7 md:p-10 rounded-lg mb-4'>
 
@@ -194,7 +194,7 @@ const ManageAssessmentPage = ({ params }: Props) => {
 
             <ErrorToast error={error} setError={setError} />
             <TopLoadingOverlay isLoading={isLoading} />
-        </>
+        </div>
     );
 }
 
