@@ -1,11 +1,21 @@
+'use client';
+
 import Header from "@/app/dashboard/components/Header";
 import SideNav from "@/app/dashboard/components/SideNav";
 import MobileNavBar from "@/app/dashboard/components/MobileNavBar";
-import { prisma } from "@/prisma/client";
 import { Grid } from "@radix-ui/themes";
+import useFetchDocuments from "@/app/dashboard/documents/hooks/useFetchDocuments";
 
-const DocumentsPage = async () => {
-    const documents = await prisma.documents.findMany();
+const DocumentsPage = () => {
+    const { documents, error, isLoading, setDocuments } = useFetchDocuments();
+
+    if (error) {
+        return (
+            <div className='text-center w-full py-10'>
+                Something went wrong. Please try again later.
+            </div>
+        );
+    }
 
     return (
         <>
