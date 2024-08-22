@@ -27,11 +27,11 @@ const Login = () => {
         if (status === 'authenticated') {
             const user = session.user as CustomUser;
             if (user.role === 'ADMIN') {
-                // router.push('/admin');
-                router.replace('/admin');
+                router.push('/admin');
+                // router.replace('/admin');
             } else if (user.status === 'ACTIVE') {
-                // router.push('/dashboard');
-                router.replace('/dashboard');
+                router.push('/dashboard');
+                // router.replace('/dashboard');
             } else {
                 setError('Your account is not active');
             }
@@ -39,6 +39,49 @@ const Login = () => {
     }, [status, session, router]);
 
     if (status === 'loading') return <Spinner />;
+
+    // const onSubmit = handleSubmit(async (data) => {
+    //     try {
+    //         setIsSubmitting(true);
+    //
+    //         const result = await signIn('credentials', {
+    //             email: data.email,
+    //             password: data.password,
+    //             redirect: false
+    //         });
+    //
+    //         if (result?.error) {
+    //             setError('Invalid email or password');
+    //             setIsSubmitting(false);
+    //         } else {
+    //             const response = await fetch('/api/auth/session');
+    //             const session = await response.json();
+    //
+    //             if (!session) {
+    //                 setError('Session could not be established');
+    //                 setIsSubmitting(false);
+    //                 return;
+    //             }
+    //
+    //             const user = session.user as CustomUser;
+    //             if (user.role === 'ADMIN') {
+    //                 router.push('/admin');
+    //                 // router.replace('/admin');
+    //             } else if (user.status === 'ACTIVE') {
+    //                 router.push('/dashboard');
+    //                 // router.replace('/dashboard');
+    //             } else {
+    //                 setError('Your account is not active');
+    //                 setIsSubmitting(false);
+    //             }
+    //         }
+    //     } catch (error) {
+    //         setError('Invalid email or password');
+    //         setIsSubmitting(false);
+    //     } finally {
+    //         setIsSubmitting(false);
+    //     }
+    // });
 
     const onSubmit = handleSubmit(async (data) => {
         try {
@@ -53,21 +96,44 @@ const Login = () => {
             if (result?.error) {
                 setError('Invalid email or password');
                 setIsSubmitting(false);
-            } else {
-                const response = await fetch('/api/auth/session');
-                const session = await response.json();
+                return;
+            }
 
-                const user = session.user as CustomUser;
-                if (user.role === 'ADMIN') {
-                    // router.push('/admin');
-                    router.replace('/admin');
-                } else if (user.status === 'ACTIVE') {
-                    // router.push('/dashboard');
-                    router.replace('/dashboard');
-                } else {
-                    setError('Your account is not active');
-                    setIsSubmitting(false);
+            let session = null;
+            const maxRetries = 2;
+            let attempt = 0;
+
+            while (attempt < maxRetries && !session) {
+                try {
+                    const response = await fetch('/api/auth/session');
+                    session = await response.json();
+
+                    if (session) break;
+
+                    attempt++;
+                    await new Promise(resolve => setTimeout(resolve, 1000)); // Wait 1 second before retrying
+                } catch (sessionError) {
+                    console.error('Error fetching session:', sessionError);
+                    attempt++;
                 }
+            }
+
+            if (!session) {
+                setError('Session could not be established after multiple attempts');
+                setIsSubmitting(false);
+                return;
+            }
+
+            const user = session.user as CustomUser;
+            if (user.role === 'ADMIN') {
+                router.push('/admin');
+                // router.replace('/admin');
+            } else if (user.status === 'ACTIVE') {
+                router.push('/dashboard');
+                // router.replace('/dashboard');
+            } else {
+                setError('Your account is not active');
+                setIsSubmitting(false);
             }
         } catch (error) {
             setError('Invalid email or password');
