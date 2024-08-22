@@ -4,6 +4,7 @@ import { useFormHandler } from "@/app/dashboard/assessments/manage/[id]/[step]/h
 import { FormProps } from "@/app/dashboard/assessments/manage/[id]/[step]/utilities/types";
 import { FiPlus, FiTrash } from "react-icons/fi";
 import React from "react";
+import { textAreaClass } from "@/app/dashboard/assessments/manage/[id]/[step]/utilities/InputsStyleClass";
 
 const CrimePreventionThroughEnvironmentalDesignConsiderations = ({
     assessmentId, currentStep, saveData, setFormSubmit, setError, setIsLoading
@@ -20,8 +21,6 @@ const CrimePreventionThroughEnvironmentalDesignConsiderations = ({
     const addConsideration = () => {
         setData([...data, { name: `consideration_${Date.now()}`, value: '' }]);
     };
-
-    const textAreaClass = 'block w-full bg-white border-b py-2 px-3 focus:outline-0 focus:border-b-blue-400 resize-none disabled:bg-gray-100';
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -85,9 +84,6 @@ const CrimePreventionThroughEnvironmentalDesignConsiderations = ({
                                                 type='button'
                                                 className='!cursor-pointer'>
                                             <FiTrash />
-                                            <Text>
-                                                Delete
-                                            </Text>
                                         </Button>
                                     </AlertDialog.Trigger>
                                     <AlertDialog.Content maxWidth="450px">
