@@ -38,7 +38,7 @@ const Considerations = ({ responses, imageResponses }: Props) => {
                                 (Object.entries(responses[consideration.name]) as [string, string][]).map(([name, value], index) => {
                                     return (
                                         <div key={index} className='mb-5'>
-                                            <p className='mb-5'>
+                                            <p className='mb-5 whitespace-pre-line'>
                                                 <b>8.1.{index + 1} </b>
                                                 {value}
                                             </p>

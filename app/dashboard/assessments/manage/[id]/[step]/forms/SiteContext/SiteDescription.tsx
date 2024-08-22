@@ -2,6 +2,7 @@ import FileUploader from "@/app/dashboard/assessments/manage/[id]/[step]/compone
 import { Callout } from "@radix-ui/themes";
 import { useFormHandler } from "@/app/dashboard/assessments/manage/[id]/[step]/hooks/useFormHandler";
 import { FormProps } from "@/app/dashboard/assessments/manage/[id]/[step]/utilities/types";
+import { textAreaClass } from "@/app/dashboard/assessments/manage/[id]/[step]/utilities/InputsStyleClass";
 
 const SiteDescription = ({
     assessmentId, currentStep, saveData, setFormSubmit, setError, setIsLoading
@@ -33,7 +34,7 @@ const SiteDescription = ({
                         2.1 Site Description
                     </label>
                     <textarea
-                        className='block w-full bg-white border-b py-2 px-3 focus:outline-0 focus:border-b-blue-400 resize-none disabled:bg-gray-100'
+                        className={textAreaClass}
                         id='siteDescription'
                         placeholder='Type your answer here'
                         {...register('siteDescription')}
@@ -45,7 +46,7 @@ const SiteDescription = ({
                 </div>
 
                 <div className='mb-5'>
-                    <p className='text-lg font-medium'>Satellite image</p>
+                <p className='text-lg font-medium'>Satellite image</p>
                     <FileUploader
                         assessmentId={assessmentId}
                         step={currentStep}

@@ -40,7 +40,7 @@ const CrimeAnalysis = ({ responses, imageResponses }: Props) => {
                                         colSpan={2}
                                         className="px-6 py-3 text-md font-medium uppercase text-left sm:text-center">
                                         Calls service on property calculated per 1000 capita based
-                                        on <b>{responses['violent-and-property-crime-risk'].callsServiceOnPropertyCalculatedPer1000Capita}</b>
+                                        on <b>{responses['violent-and-property-crime-risk'].callsServiceOnPropertyCalculatedPer1000Capita}</b> residents
                                     </th>
                                 </tr>
                                 </thead>
@@ -95,7 +95,7 @@ const CrimeAnalysis = ({ responses, imageResponses }: Props) => {
                             Comments
                         </h3>
 
-                        <p className='mb-5'>
+                        <p className='mb-5 whitespace-pre-line'>
                             {responses['violent-and-property-crime-risk'].comments}
                         </p>
 
@@ -111,7 +111,7 @@ const CrimeAnalysis = ({ responses, imageResponses }: Props) => {
                             Crime Analysis
                         </h3>
 
-                        <p className='mb-5'>
+                        <p className='mb-5 whitespace-pre-line'>
                             {responses['violent-and-property-crime-risk'].crimeAnalysis}
                         </p>
                     </div>
@@ -140,7 +140,7 @@ const CrimeAnalysis = ({ responses, imageResponses }: Props) => {
                             Notes
                         </h3>
 
-                        <p className='mb-5'>
+                        <p className='mb-5 whitespace-pre-line'>
                             {responses['crime-trend-analysis'].notes}
                         </p>
                     </div>
@@ -163,7 +163,7 @@ const CrimeAnalysis = ({ responses, imageResponses }: Props) => {
                             Assessor observations
                         </h3>
 
-                        <p className='mb-5'>
+                        <p className='mb-5 whitespace-pre-line'>
                             {responses['observations-on-crime-and-suspicious-activity-for-the-property'].assessorObservations}
                         </p>
                     </div>
@@ -173,7 +173,7 @@ const CrimeAnalysis = ({ responses, imageResponses }: Props) => {
                             Concerns expressed by site staff and residents
                         </h3>
 
-                        <p className='mb-5'>
+                        <p className='mb-5 whitespace-pre-line'>
                             {responses['observations-on-crime-and-suspicious-activity-for-the-property'].concernsExpressedBySiteStaffAndResidents}
                         </p>
                     </div>

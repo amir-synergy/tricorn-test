@@ -28,7 +28,7 @@ const Lighting = ({ responses, imageResponses }: Props) => {
                     {/*    Notes*/}
                     {/*</h3>*/}
 
-                    <p className='mb-5'>
+                    <p className='mb-5 whitespace-pre-line'>
                         {responses['lighting'].notes}
                     </p>
 

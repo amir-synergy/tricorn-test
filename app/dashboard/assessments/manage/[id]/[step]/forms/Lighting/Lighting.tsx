@@ -2,6 +2,7 @@ import FileUploader from "@/app/dashboard/assessments/manage/[id]/[step]/compone
 import {Callout} from "@radix-ui/themes";
 import { useFormHandler } from "@/app/dashboard/assessments/manage/[id]/[step]/hooks/useFormHandler";
 import { FormProps } from "@/app/dashboard/assessments/manage/[id]/[step]/utilities/types";
+import { textAreaClass } from "@/app/dashboard/assessments/manage/[id]/[step]/utilities/InputsStyleClass";
 
 const Lighting = ({
     assessmentId, currentStep, saveData, setFormSubmit, setError, setIsLoading
@@ -14,10 +15,6 @@ const Lighting = ({
         setError,
         setIsLoading
     });
-
-    const textAreaClass = 'block w-full bg-white border-b py-2 px-3 focus:outline-0 focus:border-b-blue-400 resize-none disabled:bg-gray-100';
-    const textInputClass = 'block w-full bg-white border-b py-2 px-3 focus:outline-0 focus:border-b-blue-400';
-    const numberInputClass = 'bg-white border rounded-lg py-2 px-3 focus:outline-0 focus:border-blue-400 block ms-0 w-full sm:inline sm:ms-3 sm:w-auto';
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>

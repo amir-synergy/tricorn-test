@@ -25,7 +25,7 @@ const Disorder = ({ responses, imageResponses }: Props) => {
                         </h3>
                     </div>
 
-                    <p className='mb-5'>
+                    <p className='mb-5 whitespace-pre-line'>
                         {responses['social-disorder'].socialDisorder}
                     </p>
 
@@ -42,7 +42,7 @@ const Disorder = ({ responses, imageResponses }: Props) => {
                         </h3>
                     </div>
 
-                    <p className='mb-5'>
+                    <p className='mb-5 whitespace-pre-line'>
                         {responses['physical-disorder'].physicalDisorder}
                     </p>
 

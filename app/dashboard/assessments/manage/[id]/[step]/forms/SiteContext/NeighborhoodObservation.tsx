@@ -2,6 +2,7 @@ import FileUploader from "@/app/dashboard/assessments/manage/[id]/[step]/compone
 import {Callout} from "@radix-ui/themes";
 import { useFormHandler } from "@/app/dashboard/assessments/manage/[id]/[step]/hooks/useFormHandler";
 import { FormProps } from "@/app/dashboard/assessments/manage/[id]/[step]/utilities/types";
+import { textAreaClass } from "@/app/dashboard/assessments/manage/[id]/[step]/utilities/InputsStyleClass";
 
 const NeighborhoodObservation = ({
     assessmentId, currentStep, saveData, setFormSubmit, setError, setIsLoading
@@ -33,7 +34,7 @@ const NeighborhoodObservation = ({
                         2.2 Neighborhood observation
                     </label>
                     <textarea
-                        className='block w-full bg-white border-b py-2 px-3 focus:outline-0 focus:border-b-blue-400 resize-none disabled:bg-gray-100'
+                        className={textAreaClass}
                         id='neighborhoodObservation'
                         placeholder='Type your answer here'
                         {...register('neighborhoodObservation')}

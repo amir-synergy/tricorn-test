@@ -20,7 +20,7 @@ const SiteContext = ({ responses, imageResponses }: Props) => {
                         2.1 Site description
                     </h3>
 
-                    <p className='mb-5'>
+                    <p className='mb-5 whitespace-pre-line'>
                         {responses['site-description'].siteDescription}
                     </p>
 
@@ -36,7 +36,7 @@ const SiteContext = ({ responses, imageResponses }: Props) => {
                         2.2 Neighborhood observation
                     </h3>
 
-                    <p className='mb-5'>
+                    <p className='mb-5 whitespace-pre-line'>
                         {responses['neighborhood-observation'].neighborhoodObservation}
                     </p>
 

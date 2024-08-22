@@ -36,7 +36,7 @@ const PhysicalSecurity = ({ responses, imageResponses }: Props) => {
                         </h3>
                     </div>
 
-                    <p className='mb-5'>
+                    <p className='mb-5 whitespace-pre-line'>
                         {responses['camera-system'].cameraSystem}
                     </p>
 
@@ -53,7 +53,7 @@ const PhysicalSecurity = ({ responses, imageResponses }: Props) => {
                         </h3>
                     </div>
 
-                    <p className='mb-5'>
+                    <p className='mb-5 whitespace-pre-line'>
                         {responses['security-services'].securityServices}
                     </p>
 
@@ -70,7 +70,7 @@ const PhysicalSecurity = ({ responses, imageResponses }: Props) => {
                         </h3>
                     </div>
 
-                    <p className='mb-5'>
+                    <p className='mb-5 whitespace-pre-line'>
                         {responses['electronic-access-control'].electronicAccessControl}
                     </p>
 
@@ -87,7 +87,7 @@ const PhysicalSecurity = ({ responses, imageResponses }: Props) => {
                         </h3>
                     </div>
 
-                    <p className='mb-5'>
+                    <p className='mb-5 whitespace-pre-line'>
                         {responses['residential-units'].residentialUnits}
                     </p>
 
@@ -104,7 +104,7 @@ const PhysicalSecurity = ({ responses, imageResponses }: Props) => {
                         </h3>
                     </div>
 
-                    <p className='mb-5'>
+                    <p className='mb-5 whitespace-pre-line'>
                         {responses['key-control'].keyControl}
                     </p>
 

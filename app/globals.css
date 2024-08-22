@@ -30,13 +30,13 @@ body {
     background: linear-gradient(274.96deg, rgba(203, 232, 251, 0.55) 28.85%, rgba(253, 223, 209, 0.4125) 68.42%);
 }
 
-::-webkit-scrollbar {
+::-webkit-scrollbar:not(textarea) {
     display: none!important;
     width: 0!important;
     height: 0!important;
 }
 
-*::-webkit-scrollbar {
+*::-webkit-scrollbar:not(textarea) {
     display: none!important;
     width: 0!important;
     height: 0!important;

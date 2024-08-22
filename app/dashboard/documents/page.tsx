@@ -3,7 +3,7 @@
 import Header from "@/app/dashboard/components/Header";
 import SideNav from "@/app/dashboard/components/SideNav";
 import MobileNavBar from "@/app/dashboard/components/MobileNavBar";
-import { Grid } from "@radix-ui/themes";
+import { Grid, Button } from "@radix-ui/themes";
 import useFetchDocuments from "@/app/dashboard/documents/hooks/useFetchDocuments";
 
 const DocumentsPage = () => {
@@ -30,12 +30,20 @@ const DocumentsPage = () => {
                             {
                                 documents.map(document => (
                                     <div key={document.id} className='p-4 bg-white rounded-lg relative'>
-                                        <iframe src={document.url} className='w-full rounded-lg h-[300px]'></iframe>
+                                        {/*<iframe src={document.url} className='w-full rounded-lg h-[300px]'></iframe>*/}
 
-                                        <div className='mt-3'>
+                                        <div className='mb-4'>
                                             <p className='text-xl font-medium'>{document.title}</p>
                                             <p>{document.description}</p>
                                         </div>
+
+                                        <Button loading={isLoading}>
+                                            <a href={document.url} target='_blank'>
+                                                Access Document
+                                            </a>
+                                        </Button>
+
+
                                     </div>
                                 ))
                             }

@@ -30,7 +30,7 @@ const CrimePreventionThroughEnvironmentalDesign = ({ responses, imageResponses }
                         </i>
                     </div>
 
-                    <p className='mb-5'>
+                    <p className='mb-5 whitespace-pre-line'>
                         {responses['natural-surveillance'].naturalSurveillance}
                     </p>
 
@@ -52,7 +52,7 @@ const CrimePreventionThroughEnvironmentalDesign = ({ responses, imageResponses }
                         </i>
                     </div>
 
-                    <p className='mb-5'>
+                    <p className='mb-5 whitespace-pre-line'>
                         {responses['natural-access-control'].naturalAccessControl}
                     </p>
 
@@ -74,7 +74,7 @@ const CrimePreventionThroughEnvironmentalDesign = ({ responses, imageResponses }
                         </i>
                     </div>
 
-                    <p className='mb-5'>
+                    <p className='mb-5 whitespace-pre-line'>
                         {responses['territorial-reinforcement'].territorialReinforcement}
                     </p>
 
@@ -97,7 +97,7 @@ const CrimePreventionThroughEnvironmentalDesign = ({ responses, imageResponses }
                         </i>
                     </div>
 
-                    <p className='mb-5'>
+                    <p className='mb-5 whitespace-pre-line'>
                         {responses['maintenance-and-management'].maintenanceAndManagement}
                     </p>
 

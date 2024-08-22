@@ -1,6 +1,7 @@
 import { Callout } from '@radix-ui/themes';
 import { useFormHandler } from "@/app/dashboard/assessments/manage/[id]/[step]/hooks/useFormHandler";
 import { FormProps } from "@/app/dashboard/assessments/manage/[id]/[step]/utilities/types";
+import { textInputClass } from "@/app/dashboard/assessments/manage/[id]/[step]/utilities/InputsStyleClass";
 
 export default function Introduction({
     assessmentId, currentStep, saveData, setFormSubmit, setError, setIsLoading
@@ -34,7 +35,7 @@ export default function Introduction({
                         </label>
                         <input type="date"
                                id='assessmentDate'
-                               className='block w-full bg-white border-b py-2 px-3 focus:outline-0 focus:border-b-blue-400'
+                               className={textInputClass}
                                {...register("assessmentDate")} />
                         {errors.assessmentDate && (
                             <span className='text-red-500'>{errors.assessmentDate.message?.toString()}</span>
@@ -47,7 +48,7 @@ export default function Introduction({
                         </label>
                         <input type="text"
                                id='propertyName'
-                               className='block w-full bg-white border-b py-2 px-3 focus:outline-0 focus:border-b-blue-400'
+                               className={textInputClass}
                                placeholder='Property Name'
                                {...register("propertyName")} />
                         {errors.propertyName && (
@@ -61,7 +62,7 @@ export default function Introduction({
                         </label>
                         <input type="text"
                                id='propertyManager'
-                               className='block w-full bg-white border-b py-2 px-3 focus:outline-0 focus:border-b-blue-400'
+                               className={textInputClass}
                                placeholder='John Doe'
                                {...register("propertyManager")} />
                         {errors.propertyManager && (
@@ -75,7 +76,7 @@ export default function Introduction({
                         </label>
                         <input type="text"
                                id='propertyStreet'
-                               className='block w-full bg-white border-b py-2 px-3 focus:outline-0 focus:border-b-blue-400'
+                               className={textInputClass}
                                placeholder='Street name'
                                {...register("propertyStreet")} />
                         {errors.propertyStreet && (
@@ -90,7 +91,7 @@ export default function Introduction({
                             </label>
                             <input type="text"
                                    id='propertyCity'
-                                   className='block w-full bg-white border-b py-2 px-3 focus:outline-0 focus:border-b-blue-400'
+                                   className={textInputClass}
                                    placeholder='City'
                                    {...register("propertyCity")} />
                             {errors.propertyCity && (
