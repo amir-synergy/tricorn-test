@@ -221,7 +221,7 @@ const FileUploader = ({
                     window.URL.revokeObjectURL(url);
                 }
 
-                message.success('Image downloaded successfully');
+                // message.success('Image downloaded successfully');
             });
     }
 
