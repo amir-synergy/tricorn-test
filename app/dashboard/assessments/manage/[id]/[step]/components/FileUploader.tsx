@@ -147,7 +147,7 @@
 // }
 //
 // export default FileUploader;
-
+'use client';
 
 import React, { useEffect, useState } from 'react';
 import { FiUpload } from "react-icons/fi";
@@ -158,6 +158,10 @@ import axios from "axios";
 const { Dragger } = Upload;
 
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
+
+interface Navigator {
+    msSaveOrOpenBlob?: (blob: Blob, defaultName?: string) => boolean;
+}
 
 interface FileUploaderProps {
     assessmentId: string,
@@ -192,14 +196,34 @@ const FileUploader = ({
         fetchDefaultImages().catch(() => setError('Failed to fetch default images'));
     }, [assessmentId, step, name, setIsLoading, setError]);
 
+    // const handleDownload = () => {
+    //     const link = document.createElement('a');
+    //     link.href = previewImage;
+    //     link.download = Date.now().toString();
+    //     document.body.appendChild(link);
+    //     link.click();
+    //     document.body.removeChild(link);
+    // };
+
     const handleDownload = () => {
-        const link = document.createElement('a');
-        link.href = previewImage;
-        link.download = Date.now().toString();
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    };
+        fetch(previewImage)
+            .then((res) => res.blob())
+            .then((blob) => {
+                const navigator = window.navigator as Navigator;
+                if (navigator.msSaveOrOpenBlob) {
+                    navigator.msSaveOrOpenBlob(blob);
+                } else {
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = Date.now().toString();
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                }
+
+                message.success('Image downloaded successfully');
+            });
+    }
 
     const getBase64 = (file: FileType): Promise<string> =>
         new Promise((resolve, reject) => {
