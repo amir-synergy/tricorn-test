@@ -21,6 +21,25 @@ const Login = () => {
     const [error, setError] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
 
+    const { data: session, status } = useSession();
+
+    useEffect(() => {
+        if (status === 'authenticated') {
+            const user = session.user as CustomUser;
+            if (user.role === 'ADMIN') {
+                // router.push('/admin');
+                router.replace('/admin');
+            } else if (user.status === 'ACTIVE') {
+                // router.push('/dashboard');
+                router.replace('/dashboard');
+            } else {
+                setError('Your account is not active');
+            }
+        }
+    }, [status, session, router]);
+
+    if (status === 'loading') return <Spinner />;
+
     const onSubmit = handleSubmit(async (data) => {
         try {
             setIsSubmitting(true);
@@ -40,9 +59,11 @@ const Login = () => {
 
                 const user = session.user as CustomUser;
                 if (user.role === 'ADMIN') {
-                    router.push('/admin');
+                    // router.push('/admin');
+                    router.replace('/admin');
                 } else if (user.status === 'ACTIVE') {
-                    router.push('/dashboard');
+                    // router.push('/dashboard');
+                    router.replace('/dashboard');
                 } else {
                     setError('Your account is not active');
                     setIsSubmitting(false);
@@ -55,23 +76,6 @@ const Login = () => {
             setIsSubmitting(false);
         }
     });
-
-    const { data: session, status } = useSession();
-
-    useEffect(() => {
-        if (status === 'authenticated') {
-            const user = session.user as CustomUser;
-            if (user.role === 'ADMIN') {
-                router.push('/admin');
-            } else if (user.status === 'ACTIVE') {
-                router.push('/dashboard');
-            } else {
-                setError('Your account is not active');
-            }
-        }
-    }, [status, session, router]);
-
-    if (status === 'loading') return <Spinner />;
 
     return (
         <>
