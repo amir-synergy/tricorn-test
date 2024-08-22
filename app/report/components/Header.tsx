@@ -18,19 +18,37 @@ const Header = ({ assessmentId }: Props) => {
 
     useEffect(() => {
         const handleLoad = () => {
-            setIsLoaded(true);
+            // Check if all images are loaded
+            const images = document.querySelectorAll('img');
+            const allImagesLoaded = Array.from(images).every((img) => img.complete);
+
+            if (allImagesLoaded) {
+                setIsLoaded(true);
+            }
         };
 
         if (document.readyState === 'complete') {
-            // If the page is already loaded
-            setIsLoaded(true);
+            handleLoad();
         } else {
             window.addEventListener('load', handleLoad);
         }
 
-        // Cleanup event listener on unmount
+        // Listen to each image's load event
+        const images = document.querySelectorAll('img');
+        images.forEach((img) => {
+            if (!img.complete) {
+                img.addEventListener('load', handleLoad);
+                img.addEventListener('error', handleLoad); // Handle errors too
+            }
+        });
+
+        // Cleanup event listeners on unmount
         return () => {
             window.removeEventListener('load', handleLoad);
+            images.forEach((img) => {
+                img.removeEventListener('load', handleLoad);
+                img.removeEventListener('error', handleLoad);
+            });
         };
     }, []);
 
