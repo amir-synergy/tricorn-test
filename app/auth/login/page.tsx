@@ -62,22 +62,22 @@ const Login = () => {
         }
     });
 
-    const { data: session, status } = useSession();
-
-    useEffect(() => {
-        if (status === 'authenticated') {
-            const user = session.user as CustomUser;
-            if (user.role === 'ADMIN') {
-                router.push('/admin');
-            } else if (user.status === 'ACTIVE') {
-                router.push('/dashboard');
-            } else {
-                setError('Your account is not active');
-            }
-        }
-    }, [status, session, router]);
-
-    if (status === 'loading') return;
+    // const { data: session, status } = useSession();
+    //
+    // useEffect(() => {
+    //     if (status === 'authenticated') {
+    //         const user = session.user as CustomUser;
+    //         if (user.role === 'ADMIN') {
+    //             router.push('/admin');
+    //         } else if (user.status === 'ACTIVE') {
+    //             router.push('/dashboard');
+    //         } else {
+    //             setError('Your account is not active');
+    //         }
+    //     }
+    // }, [status, session, router]);
+    //
+    // if (status === 'loading') return;
 
     return (
         <>
