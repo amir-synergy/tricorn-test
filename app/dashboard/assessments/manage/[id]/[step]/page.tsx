@@ -162,7 +162,7 @@ const ManageAssessmentPage = ({ params }: Props) => {
                 isHandlingSaveAndExit={isHandlingSaveAndExit}
             />
             <div className="sm:ml-80 min-h-screen pb-[105px]">
-                <article className="lg:p-10 md:px-8 px-6 md:pt-8 pt-[105px]">
+                <article className="lg:p-10 md:px-8 px-6 md:pt-8 pt-[80px]">
                     <div className='bg-white p-7 md:p-10 rounded-lg mb-4'>
 
                         {CurrentFormComponent && (

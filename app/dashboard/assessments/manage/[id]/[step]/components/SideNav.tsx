@@ -38,7 +38,7 @@ const SideNav = ({
                 </div>
             </aside>
 
-            <div className='z-50 sm:hidden w-full bg-white fixed top-0 left-0'>
+            <div className='z-50 sm:hidden w-full bg-[#FEF2EC] fixed top-0 left-0'>
                 <div className='grid grid-cols-2 px-5 py-4'>
                     <Button variant='ghost'
                             size='3'
