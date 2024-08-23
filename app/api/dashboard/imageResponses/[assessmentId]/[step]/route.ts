@@ -6,6 +6,7 @@ import { prisma } from "@/prisma/client";
 import { writeFile } from "fs/promises";
 import path from "path";
 import fs from 'fs/promises';
+import sharp from 'sharp';
 
 interface ImageResponsesProp {
     params: {
@@ -39,10 +40,24 @@ export async function POST(request: NextRequest, { params }: ImageResponsesProp)
             const bytes = await file.arrayBuffer();
             const buffer = Buffer.from(bytes);
 
-            const filename = `${Date.now()}-${Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)}.${file.name.split('.').pop()}`;
+            let processedBuffer;
+            const isLargeFile = buffer.byteLength >= 3 * 1024 * 1024; // 3 MB in bytes
+
+            if (isLargeFile) {
+                processedBuffer = await sharp(buffer)
+                    .webp({ quality: 70 })
+                    .toBuffer();
+            } else {
+                processedBuffer = await sharp(buffer)
+                    .webp({ quality: 100 })
+                    .toBuffer();
+            }
+
+            // const filename = `${Date.now()}-${Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)}.${file.name.split('.').pop()}`;
+            const filename = `${Date.now()}-${Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)}.webp`;
             const filepath = path.join(process.cwd(), 'public', 'uploads', filename);
 
-            await writeFile(filepath, buffer);
+            await writeFile(filepath, processedBuffer);
 
             return prisma.imageResponses.create({
                 data: {
