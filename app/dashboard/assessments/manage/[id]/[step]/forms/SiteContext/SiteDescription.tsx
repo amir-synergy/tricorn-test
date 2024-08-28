@@ -38,7 +38,7 @@ const SiteDescription = ({
                         id='siteDescription'
                         placeholder='Type your answer here'
                         {...register('siteDescription')}
-                        rows={4}
+                        rows={8}
                     />
                     {errors.siteDescription && (
                         <span className='text-red-500'>{errors.siteDescription.message?.toString()}</span>

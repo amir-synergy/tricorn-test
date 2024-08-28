@@ -38,7 +38,7 @@ const NeighborhoodObservation = ({
                         id='neighborhoodObservation'
                         placeholder='Type your answer here'
                         {...register('neighborhoodObservation')}
-                        rows={4}
+                        rows={8}
                     />
                     {errors.neighborhoodObservation && (
                         <span className='text-red-500'>{errors.neighborhoodObservation.message?.toString()}</span>

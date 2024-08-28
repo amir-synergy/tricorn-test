@@ -98,6 +98,10 @@
         margin-top: 47vh;
     }
 
+    img {
+        max-height: 95vh!important;
+    }
+
 
     #introduction h1 {
         margin-bottom: 20px!important;
