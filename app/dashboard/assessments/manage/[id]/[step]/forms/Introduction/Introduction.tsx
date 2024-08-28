@@ -35,7 +35,7 @@ export default function Introduction({
                         </label>
                         <input type="date"
                                id='assessmentDate'
-                               className={textInputClass}
+                               className={`${textInputClass} !w-100`}
                                {...register("assessmentDate")} />
                         {errors.assessmentDate && (
                             <span className='text-red-500'>{errors.assessmentDate.message?.toString()}</span>

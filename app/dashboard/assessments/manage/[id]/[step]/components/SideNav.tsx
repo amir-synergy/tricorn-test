@@ -22,9 +22,10 @@ const SideNav = ({
                 <div className="h-full py-7 overflow-y-auto bg-white flex flex-col justify-between">
                     <div>
                         <div className="mb-8">
-                            <Logo styleClasses={'mx-auto'} />
+                            <Logo styleClasses={'mx-auto'}/>
                         </div>
-                        <NavTabs responses={responses} currentStepName={currentStepName} handleSectionChange={handleSectionChange} />
+                        <NavTabs responses={responses} currentStepName={currentStepName}
+                                 handleSectionChange={handleSectionChange}/>
                     </div>
 
                     <Button variant='outline'
@@ -38,7 +39,8 @@ const SideNav = ({
                 </div>
             </aside>
 
-            <div className='z-50 sm:hidden w-full bg-[#FEF2EC] fixed top-0 left-0'>
+            {/*<div className='z-50 sm:hidden w-full bg-[#FEF2EC] fixed top-0 left-0'>*/}
+            <div className='z-50 sm:hidden w-full bg-[#FEF2EC]'>
                 <div className='grid grid-cols-2 px-5 py-4'>
                     <Button variant='ghost'
                             size='3'
@@ -59,7 +61,8 @@ const SideNav = ({
                             </Button>
                         </DropdownMenu.Trigger>
                         <DropdownMenu.Content className='!w-60'>
-                            <NavTabs responses={responses} currentStepName={currentStepName} handleSectionChange={handleSectionChange} />
+                            <NavTabs responses={responses} currentStepName={currentStepName}
+                                     handleSectionChange={handleSectionChange}/>
                         </DropdownMenu.Content>
                     </DropdownMenu.Root>
                 </div>

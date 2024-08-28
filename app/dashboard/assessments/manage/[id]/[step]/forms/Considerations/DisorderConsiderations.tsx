@@ -72,15 +72,16 @@ const DisorderConsiderations = ({
                             />
                         </div>
 
-                        <div className='absolute top-5 right-4'>
+                        <div className='absolute top-4 right-4'>
                             <AlertDialog.Root>
                                 <AlertDialog.Trigger>
                                     <Button variant='outline'
                                             color='red'
-                                            size='1'
+                                            size='2'
                                             type='button'
                                             className='!cursor-pointer'>
-                                        <FiTrash />
+                                        <FiTrash/>
+                                        <span className="hidden md:block">Delete</span>
                                     </Button>
                                 </AlertDialog.Trigger>
                                 <AlertDialog.Content maxWidth="450px">

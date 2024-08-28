@@ -7,11 +7,11 @@ interface Props {
 
 const Considerations = ({ responses, imageResponses }: Props) => {
     const considerations = [
-        { label: '8.1 Crime Prevention Through Environmental Design Considerations', name: 'crime-prevention-through-environmental-design-considerations' },
-        { label: '8.2 Physical Security Considerations', name: 'physical-security-considerations' },
-        { label: '8.3 Lighting Considerations', name: 'lighting-considerations' },
-        { label: '8.4 Disorder Considerations', name: 'disorder-considerations' },
-        { label: '8.5 Other Considerations', name: 'other-considerations' }
+        { numeration: 8.1, label: '8.1 Crime Prevention Through Environmental Design Considerations', name: 'crime-prevention-through-environmental-design-considerations' },
+        { numeration: 8.2, label: '8.2 Physical Security Considerations', name: 'physical-security-considerations' },
+        { numeration: 8.3, label: '8.3 Lighting Considerations', name: 'lighting-considerations' },
+        { numeration: 8.4, label: '8.4 Disorder Considerations', name: 'disorder-considerations' },
+        { numeration: 8.5, label: '8.5 Other Considerations', name: 'other-considerations' }
     ];
 
     return (
@@ -39,7 +39,7 @@ const Considerations = ({ responses, imageResponses }: Props) => {
                                     return (
                                         <div key={index} className='mb-5'>
                                             <p className='mb-5 whitespace-pre-line'>
-                                                <b>8.1.{index + 1} </b>
+                                                <b>{consideration.numeration}.{index + 1} </b>
                                                 {value}
                                             </p>
 

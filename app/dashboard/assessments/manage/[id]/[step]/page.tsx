@@ -162,7 +162,8 @@ const ManageAssessmentPage = ({ params }: Props) => {
                 isHandlingSaveAndExit={isHandlingSaveAndExit}
             />
             <div className="sm:ml-80 min-h-screen pb-[105px]">
-                <article className="lg:p-10 md:px-8 px-6 md:pt-8 pt-[80px]">
+                {/*<article className="lg:p-10 md:px-8 px-6 md:pt-8 pt-[80px]">*/}
+                <article className="lg:px-10 md:px-8 px-6 py-5">
                     <div className='bg-white p-7 md:p-10 rounded-lg mb-4'>
 
                         {CurrentFormComponent && (
@@ -192,7 +193,7 @@ const ManageAssessmentPage = ({ params }: Props) => {
                 </article>
             </div>
 
-            <ErrorToast error={error} setError={setError} />
+            <ErrorToast error={error} setError={setError}/>
             <TopLoadingOverlay isLoading={isLoading} />
         </div>
     );

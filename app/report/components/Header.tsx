@@ -62,7 +62,8 @@ const Header = ({ assessmentId }: Props) => {
                         <Link href={`/dashboard/assessments`} scroll={false}>
                             <Button color='orange'
                                     variant='outline'>
-                                Back to Dashboard
+                                <span className="hidden md:block">Back to Dashboard</span>
+                                <span className="block md:hidden">Go back</span>
                             </Button>
                         </Link>
                     )}

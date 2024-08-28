@@ -37,7 +37,7 @@ const DocumentsPage = () => {
                                             <p>{document.description}</p>
                                         </div>
 
-                                        <Button loading={isLoading}>
+                                        <Button loading={isLoading} className='!w-full'>
                                             <a href={document.url} target='_blank'>
                                                 Access Document
                                             </a>
