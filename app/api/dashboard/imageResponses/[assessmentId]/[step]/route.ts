@@ -46,10 +46,12 @@ export async function POST(request: NextRequest, { params }: ImageResponsesProp)
             if (isLargeFile) {
                 processedBuffer = await sharp(buffer)
                     .webp({ quality: 70 })
+                    .withMetadata()                    
                     .toBuffer();
             } else {
                 processedBuffer = await sharp(buffer)
                     .webp({ quality: 100 })
+                    .withMetadata()
                     .toBuffer();
             }
 
