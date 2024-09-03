@@ -1,3 +1,15 @@
 {
-  "buildCommand": "next build"
+  "buildCommand": "next build",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/node"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ]
 }
